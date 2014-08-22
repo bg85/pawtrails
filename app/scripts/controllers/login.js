@@ -19,16 +19,24 @@ function User () {
 angular.module('pawtrailsApp')
   .controller('LoginCtrl', function ($scope) {
     $scope.user = new User();
-    $scope.submitted = false;
+    $scope.submittedSign = false;
+    $scope.submittedLogin = false;
 
     $scope.signup = function()
     {
-    	$scope.submitted = true;
+    	$scope.submittedSign = true;
     	if (!$scope.signupForm.$invalid)
     	{
-    		return true;
+            $scope.submittedSign = false;
     	}
+    };
 
-    	return false;
+    $scope.login = function()
+    {
+        $scope.submittedLogin = true;
+        if (!$scope.loginForm.$invalid)
+        {
+            $scope.submittedLogin = false;
+        }
     };
   });

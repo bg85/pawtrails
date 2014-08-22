@@ -23,15 +23,17 @@ describe('Controller: LoginCtrl', function () {
     });
   }));
 
-  it('should return success for signing up', function () {
-    var result = scope.signup();
-    expect(result).toBeTruthy();
-  });
-
-  it('should mark the form as submitted', function () {
-    expect(scope.submitted).toBeFalsy();
+  it('should mark the form as submitted for signup', function () {
+    expect(scope.submittedSign).toBeFalsy();
     scope.signupForm.$invalid = true;
     scope.signup();
-    expect(scope.submitted).toBeTruthy();
+    expect(scope.submittedSign).toBeTruthy();
   });
+
+  it('should mark the form as submitted for loggin', function () {
+    expect(scope.submittedLogin).toBeFalsy();
+    scope.signupForm.$invalid = true;
+    scope.login();
+    expect(scope.submittedLogin).toBeTruthy();
+  });  
 });
