@@ -17,6 +17,12 @@ describe('Controller: LoginCtrl', function () {
         'password': 'something'
         }
     };
+    scope.loginForm = {
+    'user' : {
+        'email': 'email',
+        'password': 'something'
+        }
+    };
 
     LoginCtrl = $controller('LoginCtrl', {
       $scope: scope
@@ -32,7 +38,7 @@ describe('Controller: LoginCtrl', function () {
 
   it('should mark the form as submitted for loggin', function () {
     expect(scope.submittedLogin).toBeFalsy();
-    scope.signupForm.$invalid = true;
+    scope.loginForm.$invalid = true;
     scope.login();
     expect(scope.submittedLogin).toBeTruthy();
   });  

@@ -26,7 +26,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'app/scripts/app.js',
       'app/scripts/controllers/**/*.js',
-      'app/scripts/parse/**/*.js',
+      'app/scripts/services/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
