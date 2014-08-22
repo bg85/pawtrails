@@ -83,51 +83,49 @@
             <div style="float:right; position: relative; top:-20px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
         </div>  
         <div class="panel-body" >
-            <form name='form' class="form-horizontal" role="form">
+            <form name='signupForm' class="form-horizontal" role="form">
                 
                 <div id="signupalert" style="display:none" class="alert alert-danger">
                     <p>Error:</p>
                     <span></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': signupForm.email.$invalid && submitted === true}">
                     <label for="email" class="col-md-3 control-label">Email</label>
                     <div class="col-md-9">
                         <input type="email" class="form-control" name="email" data-ng-model="user.email" placeholder="Email Address" required>
                     </div>
                 </div>   
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': signupForm.firstname.$invalid && submitted === true}">
                     <label for="firstname" class="col-md-3 control-label">First Name</label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" name="firstname" data-ng-model="user.firstName" placeholder="First Name" required>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': signupForm.lastname.$invalid && submitted === true}">
                     <label for="lastname" class="col-md-3 control-label">Last Name</label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" name="lastname" data-ng-model="user.lastName" placeholder="Last Name" required>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': signupForm.password.$invalid && submitted === true}">
                     <label for="password" class="col-md-3 control-label">Password</label>
                     <div class="col-md-9">
                         <input type="password" class="form-control" name="password" data-ng-model="user.password" placeholder="Password" required>
                     </div>
                 </div>
                     
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': signupForm.confirm_password.$invalid && submitted === true}">
                     <label for="icode" class="col-md-3 control-label">Confirm</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" name="confirm_password" data-ng-model="user.password_verify" placeholder="Confirm Password" required data-password-verify="user.password">
+                        <input type="password" class="form-control" name="confirm_password" data-ng-model="user.passwordVerify" placeholder="Confirm Password" required data-password-verify="user.password">
                         <!-- <div ng-show="form.confirm_password.$error.required">
                           Field required!</div> -->
-                        <div ng-show="form.confirm_password.$error.passwordVerify" class="alert alert-danger" style="padding:5px;margin-top:5px">
-                          Fields are not equal!</div>
                     </div>
                 </div>
                 <div class="form-group">
                     <!-- Button -->                                        
                     <div class="col-md-offset-3 col-md-9">
-                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                        <button id="btn-signup" type="button" data-ng-click="signup()" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
                         <span style="margin-left:8px;">or</span>  
                     </div>
                 </div>
