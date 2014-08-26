@@ -2,37 +2,41 @@
 
 describe('Service: AuthSrvc', function () {
 
-  var AuthSrvc, ParseSrvc;
+  var AuthSrvc, ParseSrvcMock, deferred, rootScope;
 
   // load the controller's module
-  beforeEach(module('pawtrailsApp'));
+  beforeEach(function() {
+    module('pawtrailsApp', function($provide){
+      ParseSrvcMock = {
+        signup: function (email, firstName, lastName, password) {
+            email = ''; firstName = ''; lastName = ''; password = ''; 
+            return deferred.promise; 
+        }
+      };
 
-  beforeEach(inject(function (_AuthSrvc_, $q) {
-    AuthSrvc = _AuthSrvc_;
+      $provide.value('ParseSrvc', ParseSrvcMock);
+    });
 
-    ParseSrvc = {
-      signup: function (email, firstName, lastName, password) {
-          email = ''; firstName = ''; lastName = ''; password = ''; 
-          var deferred = $q.defer();
-          var data = {createdAt:'2014-08-25T14:07:35.670Z',objectId:'2WrnJinaEN',sessionToken:'TShoveIqQvaNvSPb6O00BbuMr'};
-          deferred.resolve(data);
-          return deferred.promise; 
-      }
-    };
+    inject(function (_AuthSrvc_, _$q_, _$rootScope_) {
+      deferred = _$q_.defer();
+      AuthSrvc = _AuthSrvc_;
+      rootScope = _$rootScope_;
 
-  }));
+      var data = {createdAt:'2014-08-25T14:07:35.670Z',objectId:'2WrnJinaEN',sessionToken:'TShoveIqQvaNvSPb6O00BbuMr'};
+      deferred.resolve(data);
+    });
+  });
 
   it('should create a new account for users on signup', function () {
-  	
     var email = 'test@email.com';
     var firstName = 'adrian';
     var lastName = 'gonzalez';
     var password = '123';
 
-    //alert('before');
     AuthSrvc.signup(email, firstName, lastName, password).then(function(result) {
-      //alert('result');
-      expect(result.sessionToken).toBe('TShoveIqQvaNvSPb6O00BbuMr'); //It is never getting here
+      expect(result).toBe('TShoveIqQvaNvSPb6O00BbuMr'); //It is never getting here
     });
+
+    rootScope.$apply();
   });
 });
