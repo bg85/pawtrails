@@ -37,19 +37,31 @@ angular
       $routeProvider
         .when('/', {
           templateUrl: 'views/main.html',
-          controller: 'MainCtrl'
+          controller: 'MainCtrl',
+          access: {
+            isFree: true
+          }
         })
         .when('/about', {
           templateUrl: 'views/about.html',
-          controller: 'AboutCtrl'
+          controller: 'AboutCtrl',
+          access: {
+            isFree: true
+          }
         })
         .when('/login', {
           templateUrl: 'views/login.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          access: {
+            isFree: true
+          }
         })
         .when('/signup', {
           templateUrl: 'views/signup.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          access: {
+            isFree: true
+          }
         })
         .otherwise({
           redirectTo: '/'

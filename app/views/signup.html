@@ -83,7 +83,8 @@
             <div style="float:right; position: relative; top:-20px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
         </div>  
         <div class="panel-body" >
-            <form name='signupForm' class="form-horizontal" role="form">
+            <!-- <iframe src="sink.html" name="sink" style="display:none"></iframe> -->
+            <form name='signupForm' class="form-horizontal" role="form" data-ng-submit="signup()" form-autofill-fix>
                 
                 <div id="signupalert" style="display:none" class="alert alert-danger">
                     <p>Error:</p>
@@ -125,7 +126,7 @@
                 <div class="form-group">
                     <!-- Button -->                                        
                     <div class="col-md-offset-3 col-md-9">
-                        <button id="btn-signup" type="button" data-ng-click="signup()" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
                         <span style="margin-left:8px;">or</span>  
                     </div>
                 </div>

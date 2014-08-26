@@ -17,7 +17,7 @@ function User () {
 }
 
 angular.module('pawtrailsApp')
-  .controller('LoginCtrl', ['$scope', 'ParseSrvc', function ($scope, ParseSrvc) {
+  .controller('LoginCtrl', ['$scope', '$rootScope', '$location','AuthSrvc', function ($scope, $rootScope, $location, AuthSrvc) {
     $scope.user = new User();
     $scope.submittedSign = false;
     $scope.submittedLogin = false;
@@ -28,15 +28,12 @@ angular.module('pawtrailsApp')
     	if (!$scope.signupForm.$invalid)
     	{
             $scope.submittedSign = false;
-            ParseSrvc.signup($scope.user.email, $scope.user.firstName, $scope.user.lastName, $scope.user.password).then(function(result){
-                if (result !== null && result.sessionToken !== null) {
-                    //Set session token and redirect to login
-                    //scope.$apply(function() { $location.path("/dashboard"); });
-                }
-                else
-                {
-                    //Show error message
-                }
+            AuthSrvc.signup($scope.user).then(function (result) {
+              if (result !== null) {
+                  $location.path('/dashboard');
+              }
+            }, function () {
+              //show error message
             });
     	}
     };

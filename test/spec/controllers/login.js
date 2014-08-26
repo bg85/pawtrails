@@ -25,7 +25,7 @@ describe('Controller: LoginCtrl', function () {
 
     ParseSrvc = {
       signup: function (email, firstName, lastName, password) {
-          email = ''; firstName = ''; lastName = ''; password = '';
+          email = ''; firstName = ''; lastName = ''; password = ''; 
           var deferred = $q.defer();
           var data = {createdAt:'2014-08-25T14:07:35.670Z',objectId:'2WrnJinaEN',sessionToken:'TShoveIqQvaNvSPb6O00BbuMr'};
           deferred.resolve(data);
@@ -68,6 +68,6 @@ describe('Controller: LoginCtrl', function () {
   });
 
   it('should save session for user if signup is succesful', function() {
-
+      
   });
 });

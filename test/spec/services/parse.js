@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Parse: ParseSrvc', function () {
+describe('Service: ParseSrvc', function () {
 
   var ParseSrvc, httpBackend;
 
